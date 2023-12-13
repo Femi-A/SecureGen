@@ -1,0 +1,45 @@
+SecureGen 
+1. Start Program
+Initialize necessary components (for example Scanner for input).
+2. Load Existing Password Data
+Invoke DataManager.loadPasswordMap() to load existing passwords from storage.
+If no data is found, start with an empty password map.
+3. User Authentication
+Prompt the user to input their username and password.
+The username is Admin
+The password is 12345
+Validate the credentials.
+If credentials are correct, proceed to the main menu.
+If incorrect, display an error message and prompt again.
+4. Display Main Menu
+Continuously display the menu until the user decides to exit:
+Menu options:
+Generate a new password.
+View generated passwords.
+Delete a specific password.
+Generate a pronounceable password.
+Exit.
+5. Process User Choice
+Depending on the user's selection:
+If option 1 (Generate new password):
+Call PasswordManager.generateNewPassword(scanner), which handles the logic for generating a new password based on user-defined criteria (length, inclusion of special characters and numbers).
+If option 2 (View generated passwords):
+Call PasswordManager.viewGeneratedPasswords() to display all stored passwords.
+If option 3 (Delete a specific password):
+Call PasswordManager.deleteSpecificPassword(scanner) to allow the user to select and delete a specific password.
+If option 4 (Generate pronounceable password):
+Call PasswordManager.generatePronounceablePassword(scanner). This method prompts the user for the number of syllables and generates a pronounceable password using predefined syllables, concatenating them with hyphens.
+A predefined array of strings, syllables, is created. Each element in this array is a syllable like "ah", "boo", "uh", etc. These are the building blocks of your pronounceable password.
+The method uses a loop that runs syllableCount times, where syllableCount is the number of syllables the user wants in their password. In each iteration of the loop, a random syllable is selected from the syllables array. This randomness is achieved using the Random class.
+for each selected syllable, it's appended to the password StringBuilder.
+If it's not the first syllable, a hyphen is appended before the syllable to separate it from the previous one. This makes the password more readable and pronounceable.
+
+
+If option 5 (Exit):
+Call DataManager.savePasswordMap(PasswordManager.getPasswordMap()) to save the current state of the password map.
+Close the scanner and exit the program.
+6. Save Data and Exit
+When the exit option is selected:
+Save the current state of the password map to a file.
+Release any used resources (like closing the scanner).
+End the program.
